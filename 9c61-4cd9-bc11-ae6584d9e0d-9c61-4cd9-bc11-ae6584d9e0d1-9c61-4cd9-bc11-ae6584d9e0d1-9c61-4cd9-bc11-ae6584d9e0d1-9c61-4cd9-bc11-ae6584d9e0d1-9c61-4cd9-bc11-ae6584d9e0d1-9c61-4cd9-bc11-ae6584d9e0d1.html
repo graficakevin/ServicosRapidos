@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Download Currículo</title>
+
+<link rel="stylesheet" href="css/style.css">
+<script src="js/html2canvas.min.js"></script>
+
+<script src="js/jspdf.umd.min.js"></script>
+
+</head>
+
+<body>
+
+
+<div class="container">
+
+<h1>
+
+SEU CURRÍCULO<br>
+ESTÁ DISPONÍVEL
+
+</h1>
+
+<button class="btn"
+onclick="baixarPDF()">
+
+Baixar Agora
+
+</button>
+
+<div class="loading"
+id="loading">
+
+Gerando PDF...
+
+</div>
+
+</div>
+
+<!-- PDF -->
+
+
+<div id="pdfContainer">
+
+    <div id="conteudoPDF"></div>
+
+</div>
+
+
+<script src="js/script2.js"></script>
+
+</body>
+</html>

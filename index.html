@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gráfica Kevin - Serviço de Curriculo</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="img/Logo.svg" type="image/svg+xml">
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- Screen 1 -->
+    <div class="screen active" id="screen1">
+        <div class="home">
+
+        <div class="log"></div>
+        <div class="contentHomeDisc">
+            <div class="tittlehome">PAPELARIA KEVIN</div>
+            <div class="sub-tittleHome">CURRICULO RÁPIDO</div>
+
+            <div class="homediscre">
+                <p>• Utilize esse Sistema Apenas em Situações de Urgência.</p>
+                <p>• Currículos Gerados Aqui não serão Armazenados e Salvos.</p>
+                <p>• Certifique-se que Digitou tudo Corretamente Antes de Efetuar o Pagamento.</p>
+            </div>
+        </div>
+        <button class="btn" onclick="nextScreen(2)">
+            Faça Agora
+        </button>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+<!-- TELA 2 -->
+<div class="screen" id="screen2">
+
+<h1>DADOS BÁSICOS</h1>
+
+<input type="text" id="nome" placeholder="Nome Completo">
+
+<div class="row">
+
+<input type="text" id="endereco" placeholder="Endereço">
+
+<input type="text" id="numero" placeholder="N°">
+
+</div>
+
+<input type="text" id="bairro" placeholder="Bairro">
+
+<div class="row">
+
+<input type="text" id="cidade" placeholder="Cidade">
+
+<input type="text" id="estado" placeholder="Estado">
+
+</div>
+
+<button class="btn" onclick="nextScreen(3)">
+Avançar
+</button>
+
+</div>
+
+<!-- TELA 3 -->
+
+<div class="screen" id="screen3">
+
+<h1>DADOS PESSOAIS</h1>
+
+<input type="text" id="telefone1" maxlength="15" oninput="mascaraCelular(this)" placeholder="Telefone 1">
+
+<input type="text" id="telefone2" placeholder="Telefone 2 (Opcional)" maxlength="15" oninput="mascaraCelular(this)">
+
+<input type="email" id="email" placeholder="E-Mail">
+
+<div class="row">
+
+<input type="date" id="nascimento" placeholder="01/01/2000" max="2026-12-31" style="color:#828282;">
+
+<input type="text" id="estadoCivil" placeholder="Estado Civil">
+
+</div>
+
+<button class="btn" onclick="nextScreen(4)">
+Avançar
+</button>
+
+</div>
+
+<!-- TELA 4 -->
+
+<div class="screen" id="screen4">
+
+<h1>EXPERIÊNCIAS</h1>
+
+<div id="experiencias">
+
+<div class="exp-item">
+
+<input type="text" placeholder="Empresa">
+
+<input type="text" placeholder="Cargo">
+
+<input type="text" placeholder="Período">
+
+</div>
+
+</div>
+
+<button class="btn btn-dark"
+onclick="addExperiencia()">
+
+Adicionar Mais Experiência
+
+</button>
+
+<button class="btn"
+onclick="nextScreen(5)">
+
+Avançar
+
+</button>
+
+<div class="counter" id="expCounter">
+1/5
+</div>
+
+</div>
+
+<!-- TELA 5 -->
+
+<div class="screen" id="screen5">
+
+<h1>ESCOLARIDADE E CURSOS</h1>
+
+<input type="text"
+id="escolaridade"
+placeholder="Escolaridade">
+
+<div id="cursos">
+
+<input type="text"
+placeholder="Nome do Curso">
+
+</div>
+
+<button class="btn btn-dark"
+onclick="addCurso()">
+
+Adicionar Mais Cursos
+
+</button>
+
+<button class="btn"
+onclick="nextScreen(6)">
+
+Não Possuo / Avançar
+
+</button>
+
+<div class="counter"
+id="cursoCounter">
+
+1/5
+
+</div>
+
+</div>
+
+<!-- TELA 6 -->
+
+<div class="screen" id="screen6">
+
+<h1>OBJETIVO PROFISSIONAL</h1>
+
+<textarea
+id="objetivo"
+placeholder="Digite seu objetivo profissional"></textarea>
+
+<button class="btn"
+onclick="nextScreen(7)">
+
+Avançar
+
+</button>
+
+</div>
+
+<!-- TELA 7 -->
+
+<div class="screen" id="screen7">
+
+<h1>REALIZE O PAGAMENTO</h1>
+
+<button class="btn"
+onclick="realizarPagamento()">
+
+Realizar Pagamento
+
+</button>
+
+</div>
+
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
+
