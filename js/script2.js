@@ -18,169 +18,228 @@ async function baixarPDF(){
     .getElementById("conteudoPDF")
     .innerHTML = `
     
-    <h1 style="
-    text-align:center;
-    margin-bottom:20px;
-    ">
+    <h1 style="" class="nameToPDF">
     ${dados.nome}
     </h1>
 
-    <hr><br>
+    <p class="enderecoToPDF">
 
-    <h2>DADOS BÁSICOS</h2>
-
-    <p>
-    <b>Endereço:</b>
     ${dados.endereco},
-    ${dados.numero}
-    </p>
+    ${dados.numero} - ${dados.bairro} - ${dados.cidade}/${dados.estado}
 
-    <p>
-    <b>Bairro:</b>
-    ${dados.bairro}
-    </p>
-
-    <p>
-    <b>Cidade:</b>
-    ${dados.cidade} - ${dados.estado}
     </p>
 
     <br>
 
-    <h2>DADOS PESSOAIS</h2>
+    <div class="categoriadecurriculo subTitleToPDF">
+    <span class="boldtext">DADOS PESSOAIS</span>
+    </div>
+  
+    <div class="dadoscontent contentToPDF">
 
-    <p>
-    <b>Telefone 1:</b>
-    ${dados.telefone1}
-    </p>
+        <p>
 
-    <p>
-    <b>Telefone 2:</b>
-    ${dados.telefone2 || "-"}
-    </p>
+            <b>Telefone:</b>
 
-    <p>
-    <b>E-Mail:</b>
-    ${dados.email}
-    </p>
+            <span class="colorvariable telefonefixo">
+            ${dados.telefone1}
+            </span>
 
-    <p>
-    <b>Data de Nascimento:</b>
-    ${dados.nascimento}
-    </p>
+            <span class="separadorTelefone">|</span>
 
-    <p>
-    <b>Estado Civil:</b>
-    ${dados.estadoCivil}
-    </p>
+            <span class="colorvariable telefonefixo">
+            ${dados.telefone2 || '<div class="separator">-</div>'}
+            </span>
 
-    <br>
+        </p>
 
-    <h2>OBJETIVO PROFISSIONAL</h2>
+        <p>
+
+            <b>E-Mail:</b>
+
+            <span class="colorvariable">
+            ${dados.email}
+            </span>
+
+        </p>
+
+        <p>
+
+            <b>Data de Nascimento:</b>
+
+            <span class="colorvariable">
+            ${dados.nascimento}
+            </span>
+
+        </p>
+
+        <p>
+
+            <b>Estado Civil:</b>
+
+            <span class="colorvariable">
+            ${dados.estadoCivil}
+            </span>
+
+        </p>
+
+    </div>
+
+    <div class="categoriadecurriculo subTitleToPDF">
+    <span class="boldtext">ESCOLARIDADE</span>
+    </div>
+
+    <div class="dadoscontent contentToPDF">
+
+        <p>
+        ${dados.escolaridade}
+        </p>
+
+    </div>
+
+    ${
+        dados.cursos.filter(curso => curso.trim() !== '').length > 0
+        ?
+        `
+        <div class="categoriadecurriculo subTitleToPDF">
+        <span class="boldtext">CURSOS</span>
+        </div>
+
+        <div class="dadoscontent contentToPDF">
+
+        <ul>
+        
+        ${dados.cursos
+        .filter(curso => curso.trim() !== '')
+        .map(curso => `
+        
+        <li><span class="quadradinho"></span> ${curso}</li>
+        
+        `).join('')}
+
+        </ul>
+
+        </div>
+        `
+        :
+        ''
+    }
+
+    ${
+        dados.experiencias.filter(exp =>
+            exp.empresa.trim() !== '' ||
+            exp.cargo.trim() !== '' ||
+            exp.periodo.trim() !== ''
+        ).length > 0
+        ?
+        `
+        <div class="categoriadecurriculo subTitleToPDF">
+        <span class="boldtext">EXPERIÊNCIAS PROFISSIONAIS<span>
+        </div>
+
+        ${dados.experiencias
+        .filter(exp =>
+            exp.empresa.trim() !== '' ||
+            exp.cargo.trim() !== '' ||
+            exp.periodo.trim() !== ''
+        )
+        .map(exp => `
+        
+        <div style="margin-bottom:20px; margin-top:10px;" class=" contentToPDF">
+
+        <p>
+        <span class="quadradinho"></span>
+        <b class="CaixaAlta">${exp.empresa}</b>
+        </p>
+
+        <p>
+        <b class="CargEspacament espacamentoEmpressToPDF">Cargo:</b>
+        <span class="colorvariable contentColorClearToPDF" style="font-size: 18px;">${exp.cargo}</span>
+        </p>
+
+        <p class="espacamentoextra">
+        <b class="CargEspacament espacamentoEmpressToPDF">Período:</b>
+        <span class="colorvariable contentColorClearToPDF" style="font-size: 18px;">${exp.periodo}</span>
+        </p>
+
+        </div>
+
+        `).join('')}
+        `
+        :
+        ''
+    }
+
+    <div class="categoriadecurriculo subTitleToPDF">
+    <span class="boldtext">OBJETIVO PROFISSIONAL</span>
+    </div>
+
+    <div class="dadoscontent contentToPDF justify">
 
     <p>
     ${dados.objetivo}
     </p>
 
-    <br>
-
-    <h2>EXPERIÊNCIAS PROFISSIONAIS</h2>
-
-    ${dados.experiencias.map(exp => `
-
-    <div style="margin-bottom:20px;">
-
-    <p>
-    <b>Empresa:</b>
-    ${exp.empresa}
-    </p>
-
-    <p>
-    <b>Cargo:</b>
-    ${exp.cargo}
-    </p>
-
-    <p>
-    <b>Período:</b>
-    ${exp.periodo}
-    </p>
-
     </div>
-
-    `).join('')}
-
-    <br>
-
-    <h2>ESCOLARIDADE</h2>
-
-    <p>
-    ${dados.escolaridade}
-    </p>
-
-    <br>
-
-    <h2>CURSOS</h2>
-
-    <ul>
-
-    ${dados.cursos.map(curso => `
-    
-    <li>${curso}</li>
-    
-    `).join('')}
-
-    </ul>
     
     `;
-
-    const element =
-    document.getElementById("pdfContainer");
-
-    // espera renderizar
 
     await new Promise(resolve =>
         setTimeout(resolve, 500)
     );
 
-    // gera canvas
-
-    const canvas =
-    await html2canvas(element,{
-
-        scale:2
-
-    });
-
-    const imgData =
-    canvas.toDataURL('image/png');
-
-    // cria pdf
-
     const { jsPDF } = window.jspdf;
 
-    const pdf =
-    new jsPDF({
+    const pdf = new jsPDF({
 
-        orientation:'portrait',
+        orientation: 'portrait',
 
-        unit:'px',
+        unit: 'mm',
 
-        format:[794,1123]
+        format: 'a4'
 
     });
 
-    pdf.addImage(
-        imgData,
-        'PNG',
-        0,
-        0,
-        794,
-        1123
-    );
+    const conteudo =
+document.getElementById("conteudoPDF");
 
-    pdf.save('curriculo.pdf');
+await pdf.html(conteudo, {
 
-    document
-    .getElementById("loading")
-    .style.display = "none";
+    x: 10,
+
+    y: 10,
+
+    width: 230,
+
+    windowWidth: 794,
+
+    autoPaging: 'text',
+
+    html2canvas: {
+
+        scale: 0.33
+
+    },
+
+    callback: function (doc) {
+
+        doc.setProperties({
+
+            title: 'Currículo Profissional',
+
+            subject: 'Currículo',
+
+            author: 'WebSite - Gráfica Kevin',
+
+            creator: 'Gráfica Kevin'
+
+        });
+
+        doc.save(dados.nome + '.pdf');
+
+        document
+        .getElementById("loading")
+        .style.display = "none";
+    }
+});
 }

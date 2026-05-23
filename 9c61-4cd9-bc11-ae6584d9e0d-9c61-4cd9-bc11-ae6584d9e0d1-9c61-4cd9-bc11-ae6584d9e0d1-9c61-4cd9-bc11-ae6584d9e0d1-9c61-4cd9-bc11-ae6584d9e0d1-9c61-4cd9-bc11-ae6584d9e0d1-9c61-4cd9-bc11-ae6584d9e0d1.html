@@ -10,6 +10,7 @@ content="width=device-width, initial-scale=1.0">
 <title>Download Currículo</title>
 
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/stylecurriculumpdfexporter.css">
 <script src="js/html2canvas.min.js"></script>
 
 <script src="js/jspdf.umd.min.js"></script>
@@ -18,7 +19,17 @@ content="width=device-width, initial-scale=1.0">
 
 <body>
 
+<div class="progressbar">
 
+    <div class="progress-step active"></div>
+    <div class="progress-step active"></div>
+    <div class="progress-step active"></div>
+    <div class="progress-step active"></div>
+    <div class="progress-step active"></div>
+    <div class="progress-step active"></div>
+    <div class="progress-step active"></div>
+
+    </div>
 <div class="container">
 
 <h1>
@@ -31,7 +42,7 @@ ESTÁ DISPONÍVEL
 <button class="btn"
 onclick="baixarPDF()">
 
-Baixar Agora
+Baixar PDF
 
 </button>
 
