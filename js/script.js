@@ -442,7 +442,7 @@ function realizarPagamento(){
     salvarDados();
 
     window.location.href =
-    "9c61-4cd9-bc11-ae6584d9e0d-9c61-4cd9-bc11-ae6584d9e0d1-9c61-4cd9-bc11-ae6584d9e0d1-9c61-4cd9-bc11-ae6584d9e0d1-9c61-4cd9-bc11-ae6584d9e0d1-9c61-4cd9-bc11-ae6584d9e0d1-9c61-4cd9-bc11-ae6584d9e0d1.html";
+    "https://mpago.la/1uuF5Rn";
 }
 
 
